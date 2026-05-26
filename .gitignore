@@ -1,0 +1,16 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local Netlify state (if you ever install netlify-cli)
+.netlify/
+
+# Logs
+*.log

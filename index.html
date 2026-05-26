@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hisn — Cybersecurity for Saudi mid-market · NCA · PDPL · SAMA</title>
+<meta name="description" content="Saudi cybersecurity practice for mid-market companies. Productized services, scope-based audits (VAPT, NCA CSCC/CCC/DCC, SAMA, ISO 27001), and vCISO.">
+<meta name="theme-color" content="#0A2540">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A2540'/%3E%3Cpath d='M22 18v12h6c5 0 8 3 8 8v14h-6V40c0-3-2-4-5-4h-9V18h6zM44 18h6v34h-6V18z' fill='%23E5A800'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #0A2540;
+    --navy-deep: #051828;
+    --navy-soft: #15375a;
+    --gold: #E5A800;
+    --gold-bright: #F5B700;
+    --gold-soft: rgba(229, 168, 0, 0.08);
+    --ink: #0f1a28;
+    --text: #2a3548;
+    --muted: #5a6878;
+    --line: #e3e6ec;
+    --line-strong: #c9cfd9;
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-alt: #fbfbfd;
+    --error: #c53030;
+    --shadow-sm: 0 1px 2px rgba(10, 37, 64, 0.04), 0 0 0 1px rgba(10, 37, 64, 0.03);
+    --shadow-md: 0 4px 14px rgba(10, 37, 64, 0.06), 0 1px 3px rgba(10, 37, 64, 0.04);
+    --shadow-lg: 0 18px 40px rgba(10, 37, 64, 0.1), 0 6px 12px rgba(10, 37, 64, 0.06);
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body[dir="rtl"] { font-feature-settings: "ss01"; line-height: 1.85; }
+  body.modal-open { overflow: hidden; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .container-narrow { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+  a { color: var(--navy); text-decoration: none; }
+
+  /* HEADER */
+  header { background: var(--navy); color: #fff; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+  .brand-mark { width: 38px; height: 38px; background: var(--gold); border-radius: 8px; display: grid; place-items: center; color: var(--navy-deep); font-weight: 800; font-size: 22px; line-height: 1; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-name { font-weight: 800; font-size: 18px; }
+  .brand-tag { font-size: 11.5px; color: rgba(255,255,255,0.65); font-weight: 400; }
+  .nav-actions { display: flex; align-items: center; gap: 14px; }
+  .lang-toggle { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 14px; border-radius: 6px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s ease; }
+  .lang-toggle:hover { background: rgba(255,255,255,0.08); border-color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy-deep); padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 14px; transition: all 0.15s ease; cursor: pointer; border: none; font-family: inherit; }
+  .nav-cta:hover { background: var(--gold-bright); }
+  @media (max-width: 640px) { .nav-cta { display: none; } .brand-tag { display: none; } }
+
+  /* HERO */
+  .hero {
+    background: radial-gradient(ellipse at top right, rgba(229, 168, 0, 0.12) 0%, transparent 50%), linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: #fff; padding: 100px 0 110px; position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+  .hero-content { position: relative; max-width: 820px; text-align: center; margin: 0 auto; }
+  .eyebrow { display: inline-block; color: var(--gold-bright); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; padding: 6px 14px; border: 1px solid rgba(229, 168, 0, 0.35); border-radius: 100px; background: rgba(229, 168, 0, 0.06); }
+  body[dir="rtl"] .eyebrow { letter-spacing: 0.5px; text-transform: none; }
+  h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; line-height: 1.15; margin-bottom: 22px; letter-spacing: -0.5px; }
+  body[dir="rtl"] h1 { letter-spacing: -0.2px; line-height: 1.3; }
+  .hero p.lead { font-size: clamp(16px, 1.6vw, 19px); color: rgba(255,255,255,0.84); max-width: 680px; margin: 0 auto 32px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 15px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; transition: all 0.15s ease; cursor: pointer; border: none; font-family: inherit; line-height: 1.3; text-align: center; }
+  .btn-primary { background: var(--gold); color: var(--navy-deep); box-shadow: 0 4px 14px rgba(229, 168, 0, 0.25); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(229, 168, 0, 0.35); }
+  .btn-outline-light { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-outline-light:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
+  .btn-secondary { background: var(--navy); color: #fff; }
+  .btn-secondary:hover { background: var(--navy-deep); }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { background: var(--bg); color: var(--text); }
+
+  /* HOW IT WORKS */
+  .how { background: var(--surface); padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
+  @media (max-width: 800px) { .how-grid { grid-template-columns: 1fr; gap: 22px; } }
+  .how-step { display: flex; gap: 16px; align-items: flex-start; }
+  .how-num { width: 32px; height: 32px; flex-shrink: 0; background: var(--navy); color: var(--gold); border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 14px; }
+  .how-text strong { display: block; color: var(--navy); font-weight: 700; margin-bottom: 4px; font-size: 15.5px; }
+  .how-text span { color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+  /* SECTION BASE */
+  section { padding: 88px 0; }
+  .section-tag { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  body[dir="rtl"] .section-tag { text-transform: none; letter-spacing: 0.3px; font-size: 13px; }
+  h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.3px; line-height: 1.2; }
+  body[dir="rtl"] h2 { letter-spacing: 0; line-height: 1.35; }
+  .section-sub { font-size: 17px; color: var(--muted); max-width: 700px; line-height: 1.7; }
+  .section-head { text-align: center; margin-bottom: 56px; }
+  .section-head .section-sub { margin: 16px auto 0; }
+
+  /* WHO THIS IS FOR */
+  .fit { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px; }
+  .fit-item { display: flex; gap: 14px; align-items: flex-start; padding: 18px 22px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); font-size: 15px; line-height: 1.55; }
+  .fit-check { width: 22px; height: 22px; flex-shrink: 0; background: var(--gold); border-radius: 50%; display: grid; place-items: center; color: var(--navy-deep); font-weight: 800; font-size: 13px; margin-top: 1px; }
+
+  /* SERVICES — PRODUCTIZED */
+  .services-prod { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 920px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .services-grid { grid-template-columns: 1fr; } }
+  .service { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px 26px; display: flex; flex-direction: column; transition: all 0.2s ease; }
+  .service:hover { border-color: var(--gold); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .service-tag { display: inline-block; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+  body[dir="rtl"] .service-tag { letter-spacing: 0.3px; text-transform: none; font-size: 12px; }
+  .service h3 { color: var(--navy); font-size: 19px; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
+  .service-meta { color: var(--muted); font-size: 13px; font-weight: 500; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .service-price-block { margin-bottom: 18px; }
+  .service-price { font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .service-price .unit { font-size: 13px; color: var(--muted); font-weight: 500; margin-left: 6px; }
+  body[dir="rtl"] .service-price .unit { margin-left: 0; margin-right: 6px; }
+  .service-price-sub { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+  .service-list { list-style: none; margin-bottom: 22px; flex: 1; }
+  .service-list li { padding: 5px 0 5px 20px; position: relative; font-size: 14px; color: var(--text); line-height: 1.55; }
+  body[dir="rtl"] .service-list li { padding: 5px 20px 5px 0; }
+  .service-list li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 800; font-size: 13px; }
+  body[dir="rtl"] .service-list li::before { left: auto; right: 0; }
+  .service-fit { font-size: 13px; color: var(--muted); margin-bottom: 18px; padding: 11px 14px; background: var(--surface-alt); border-radius: var(--radius-sm); border: 1px solid var(--line); line-height: 1.5; }
+  .service .btn { width: 100%; padding: 12px 18px; font-size: 14.5px; }
+
+  /* SERVICES — SCOPE-BASED */
+  .services-scope { background: var(--surface); border-top: 1px solid var(--line); }
+  .scope-category { margin-top: 40px; }
+  .scope-category:first-of-type { margin-top: 32px; }
+  .scope-category-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .scope-category-num { width: 28px; height: 28px; background: var(--navy); color: var(--gold); border-radius: 6px; display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+  .scope-category-title { color: var(--navy); font-size: 18px; font-weight: 800; }
+  .scope-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .scope-card { background: var(--surface-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; transition: all 0.15s ease; display: flex; flex-direction: column; gap: 8px; }
+  .scope-card:hover { border-color: var(--gold); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .scope-card-name { font-weight: 700; color: var(--navy); font-size: 15px; line-height: 1.35; }
+  .scope-card-price { font-size: 14px; color: var(--gold); font-weight: 700; }
+  .scope-card-price .from { color: var(--muted); font-weight: 500; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+  body[dir="rtl"] .scope-card-price .from { text-transform: none; letter-spacing: 0; margin-right: 0; margin-left: 4px; font-size: 13px; }
+  .scope-card-meta { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .scope-cta { margin-top: 44px; text-align: center; padding: 32px 28px; background: var(--surface-alt); border: 1px dashed var(--line-strong); border-radius: var(--radius); }
+  .scope-cta p { color: var(--text); margin-bottom: 16px; font-size: 15px; }
+
+  /* vCISO */
+  .vciso { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .vciso::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: linear-gradient(180deg, black 0%, transparent 100%); }
+  .vciso .container { position: relative; }
+  .vciso h2 { color: #fff; }
+  .vciso .section-sub { color: rgba(255,255,255,0.78); }
+  .vciso .section-tag { color: var(--gold-bright); }
+  .vciso-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; margin-top: 48px; }
+  @media (max-width: 840px) { .vciso-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .vciso-body p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 16px; line-height: 1.75; }
+  .vciso-list { list-style: none; margin: 22px 0; }
+  .vciso-list li { padding: 8px 0 8px 28px; position: relative; font-size: 15px; color: rgba(255,255,255,0.92); line-height: 1.5; }
+  body[dir="rtl"] .vciso-list li { padding: 8px 28px 8px 0; }
+  .vciso-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold-bright); font-weight: 800; font-size: 16px; }
+  body[dir="rtl"] .vciso-list li::before { left: auto; right: 0; content: '←'; }
+  .vciso-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); padding: 36px 32px; backdrop-filter: blur(4px); }
+  .vciso-card .label { color: var(--gold-bright); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  body[dir="rtl"] .vciso-card .label { letter-spacing: 0.3px; text-transform: none; font-size: 13px; }
+  .vciso-card h3 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.25; }
+  .vciso-card p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 24px; line-height: 1.65; }
+  .vciso-card .btn-primary { width: 100%; padding: 14px 20px; }
+
+  /* ABOUT */
+  .about { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-content { max-width: 780px; margin: 0 auto; text-align: center; }
+  .about p { font-size: 17px; color: var(--text); margin-bottom: 20px; line-height: 1.8; }
+  body[dir="rtl"] .about p { line-height: 1.95; }
+  .about-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 36px 0 28px; }
+  @media (max-width: 720px) { .about-pillars { grid-template-columns: 1fr; } }
+  .pillar { padding: 22px 20px; background: var(--surface-alt); border: 1px solid var(--line); border-radius: var(--radius); text-align: left; }
+  body[dir="rtl"] .pillar { text-align: right; }
+  .pillar-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  body[dir="rtl"] .pillar-num { letter-spacing: 0.3px; text-transform: none; font-size: 12px; }
+  .pillar strong { display: block; color: var(--navy); font-weight: 800; font-size: 16px; margin-bottom: 6px; }
+  .pillar span { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .about-mark { margin-top: 32px; display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px; background: var(--surface-alt); border: 1px solid var(--line); border-radius: 100px; font-size: 14px; color: var(--muted); }
+  .about-mark .ar { color: var(--navy); font-weight: 800; font-size: 18px; }
+
+  /* FAQ */
+  .faq-list { max-width: 780px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 12px; background: var(--surface); overflow: hidden; transition: all 0.15s ease; }
+  .faq-item[open] { border-color: var(--gold); box-shadow: var(--shadow-sm); }
+  .faq-item summary { padding: 20px 26px; cursor: pointer; font-weight: 700; color: var(--navy); font-size: 16px; list-style: none; position: relative; padding-right: 56px; }
+  body[dir="rtl"] .faq-item summary { padding-right: 26px; padding-left: 56px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: 26px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 24px; font-weight: 800; transition: transform 0.2s ease; }
+  body[dir="rtl"] .faq-item summary::after { right: auto; left: 26px; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item .faq-body { padding: 0 26px 22px; color: var(--text); font-size: 15px; line-height: 1.75; }
+
+  /* FINAL CTA */
+  .final-cta { background: radial-gradient(ellipse at bottom left, rgba(229, 168, 0, 0.15) 0%, transparent 55%), linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%); color: #fff; padding: 90px 0; position: relative; overflow: hidden; }
+  .final-cta::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%); }
+  .final-cta .container { position: relative; }
+  .final-cta-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+  .final-cta h2 { color: #fff; margin-bottom: 18px; }
+  .final-cta p.lead { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 32px; line-height: 1.75; }
+  .check-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 36px; text-align: left; }
+  body[dir="rtl"] .check-features { text-align: right; }
+  @media (max-width: 720px) { .check-features { grid-template-columns: 1fr; } }
+  .check-feature { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 16px 18px; font-size: 14px; }
+  .check-feature strong { color: var(--gold-bright); display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+  body[dir="rtl"] .check-feature strong { text-transform: none; letter-spacing: 0; }
+  .check-feature span { color: rgba(255,255,255,0.85); line-height: 1.55; }
+  .final-cta .btn { font-size: 16px; padding: 16px 38px; }
+  .final-cta-meta { margin-top: 24px; font-size: 14px; color: rgba(255,255,255,0.65); }
+  .final-cta-meta a { color: var(--gold-bright); font-weight: 500; }
+
+  /* FOOTER */
+  footer { background: var(--navy-deep); color: rgba(255,255,255,0.55); padding: 38px 0 32px; font-size: 13.5px; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .footer-brand { color: #fff; font-weight: 700; }
+  .footer-brand .ar-mark { color: var(--gold); margin-right: 6px; }
+  body[dir="rtl"] .footer-brand .ar-mark { margin-right: 0; margin-left: 6px; }
+  footer a { color: var(--gold); }
+  footer a:hover { text-decoration: underline; }
+
+  /* LANG TOGGLE */
+  .lang-ar { display: none; }
+  body[dir="rtl"] .lang-en { display: none; }
+  body[dir="rtl"] .lang-ar { display: inline; }
+
+  /* DIALOG (modal forms) */
+  dialog.form-dialog {
+    border: none; padding: 0; border-radius: var(--radius-lg);
+    max-width: 640px; width: calc(100% - 32px); max-height: 90vh;
+    overflow: hidden; background: var(--surface); color: var(--text);
+    box-shadow: 0 24px 60px rgba(10, 37, 64, 0.3);
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+  dialog.form-dialog::backdrop { background: rgba(5, 24, 40, 0.65); backdrop-filter: blur(4px); }
+  .form-dialog .dlg-head {
+    padding: 22px 28px 18px; border-bottom: 1px solid var(--line);
+    background: var(--surface-alt); position: relative;
+  }
+  .form-dialog .dlg-head h3 { color: var(--navy); font-size: 19px; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
+  .form-dialog .dlg-head p { color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+  .form-close {
+    position: absolute; top: 14px; right: 14px;
+    background: transparent; border: none; cursor: pointer;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center; color: var(--muted);
+    font-size: 22px; line-height: 1; transition: all 0.15s ease;
+  }
+  body[dir="rtl"] .form-close { right: auto; left: 14px; }
+  .form-close:hover { background: var(--line); color: var(--ink); }
+  .form-dialog form, .form-dialog .form-success {
+    max-height: calc(90vh - 80px); overflow-y: auto;
+    padding: 22px 28px 24px;
+  }
+  .form-dialog .honeypot { display: none !important; }
+  .field { margin-bottom: 18px; }
+  .field label.lbl {
+    display: block; font-weight: 700; color: var(--navy);
+    font-size: 13.5px; margin-bottom: 8px; line-height: 1.4;
+  }
+  .field .lbl .req { color: var(--error); margin-left: 3px; }
+  body[dir="rtl"] .field .lbl .req { margin-left: 0; margin-right: 3px; }
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea {
+    width: 100%; padding: 11px 14px; border: 1px solid var(--line-strong);
+    border-radius: 8px; font-family: inherit; font-size: 14px;
+    background: var(--surface); color: var(--text); transition: border-color 0.15s ease;
+  }
+  body[dir="rtl"] .field input[type="text"], body[dir="rtl"] .field input[type="email"], body[dir="rtl"] .field input[type="tel"], body[dir="rtl"] .field select, body[dir="rtl"] .field textarea { text-align: right; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(229, 168, 0, 0.12); }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .check-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px;
+  }
+  .check-grid label, .radio-grid label {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 9px 12px; background: var(--surface-alt);
+    border: 1px solid var(--line); border-radius: var(--radius-sm);
+    cursor: pointer; font-size: 13.5px; color: var(--text);
+    transition: all 0.12s ease; line-height: 1.4;
+  }
+  .check-grid label:hover, .radio-grid label:hover { border-color: var(--gold); background: var(--gold-soft); }
+  .check-grid input, .radio-grid input { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
+  .radio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+  .form-actions { display: flex; gap: 10px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .form-actions .btn { padding: 12px 22px; font-size: 14px; flex: 1; }
+  .form-actions .btn-ghost { flex: 0 0 auto; }
+  .form-error {
+    background: #fff5f5; color: var(--error); padding: 10px 14px;
+    border: 1px solid #fed7d7; border-radius: var(--radius-sm);
+    font-size: 13.5px; margin-top: 14px; display: none;
+  }
+  .form-error.show { display: block; }
+  .form-success { text-align: center; padding: 48px 28px; }
+  .form-success .check-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--gold); color: var(--navy-deep);
+    display: grid; place-items: center;
+    font-size: 30px; font-weight: 800;
+    margin: 0 auto 18px;
+  }
+  .form-success h3 { color: var(--navy); font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+  .form-success p { color: var(--muted); font-size: 15px; margin-bottom: 22px; line-height: 1.6; }
+  .form-success .btn { padding: 12px 28px; }
+</style>
+</head>
+<body dir="ltr">
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="brand" aria-label="Hisn home">
+        <span class="brand-mark">ح</span>
+        <span class="brand-text">
+          <span class="brand-name"><span class="lang-en">Hisn</span><span class="lang-ar">حِصن</span></span>
+          <span class="brand-tag"><span class="lang-en">Cybersecurity for Saudi mid-market</span><span class="lang-ar">أمن سيبراني للسوق السعودي المتوسط</span></span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
+          <span class="lang-en">العربية</span>
+          <span class="lang-ar">English</span>
+        </button>
+        <button class="nav-cta" type="button" data-open="dialogCheck">
+          <span class="lang-en">Free Readiness Check</span>
+          <span class="lang-ar">فحص الجاهزية المجاني</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow">
+      <span class="lang-en">Saudi-built · NCA · PDPL · SAMA</span>
+      <span class="lang-ar">صنع سعودي · NCA · PDPL · ساما</span>
+    </span>
+    <h1>
+      <span class="lang-en">Cybersecurity built for Saudi mid-market companies.</span>
+      <span class="lang-ar">أمن سيبراني مبني للشركات السعودية متوسطة الحجم.</span>
+    </h1>
+    <p class="lead">
+      <span class="lang-en">Hisn is a Saudi cybersecurity practice helping mid-sized companies raise their security maturity at a reasonable cost — with technical depth aligned to NCA, PDPL, and SAMA requirements.</span>
+      <span class="lang-ar">حِصن منشأة سعودية متخصصة في الأمن السيبراني، تساعد الشركات متوسطة الحجم على رفع نضجها الأمني بتكلفة معقولة وبعمق فني يطابق متطلبات NCA و PDPL وساما.</span>
+    </p>
+    <div class="hero-actions">
+      <button type="button" class="btn btn-primary" data-open="dialogCheck">
+        <span class="lang-en">Start the 5-minute Check</span>
+        <span class="lang-ar">ابدأ فحص الجاهزية — ٥ دقائق</span>
+      </button>
+      <a href="#services" class="btn btn-outline-light">
+        <span class="lang-en">See all services</span>
+        <span class="lang-ar">استعرض الخدمات</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-text">
+          <strong><span class="lang-en">Readiness Check</span><span class="lang-ar">فحص الجاهزية</span></strong>
+          <span><span class="lang-en">7 questions in 5 minutes. We send a one-page report within 24 hours covering your areas of strength, areas of exposure, and the recommended first step.</span><span class="lang-ar">٧ أسئلة في ٥ دقائق. نرسل تقرير صفحة واحدة خلال ٢٤ ساعة يوضح نقاط القوة، نقاط الانكشاف، والخطوة الموصى بالبدء بها.</span></span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-text">
+          <strong><span class="lang-en">Scoped proposal</span><span class="lang-ar">عرض محدد النطاق</span></strong>
+          <span><span class="lang-en">If the service is a fit, we send a detailed proposal covering the deliverables, timeline, and price — within a clearly defined and agreed scope.</span><span class="lang-ar">إذا كانت الخدمة مناسبة، نرسل عرضاً تفصيلياً يشمل المخرجات والجدول الزمني والسعر، وفق نطاق محدد ومتفق عليه.</span></span>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-text">
+          <strong><span class="lang-en">Delivered</span><span class="lang-ar">يتم التسليم</span></strong>
+          <span><span class="lang-en">Productized work ships in days. Scope-based engagements in weeks. Every deliverable applicable on day one.</span><span class="lang-ar">الخدمات الجاهزة تُسلَّم بأيام. التقييمات الأكبر بأسابيع. كل مخرج قابل للتطبيق من يومه الأول.</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="fit">
+  <div class="container-narrow">
+    <div class="section-head">
+      <div class="section-tag"><span class="lang-en">Who we work with</span><span class="lang-ar">مع من نعمل</span></div>
+      <h2><span class="lang-en">This is for you if…</span><span class="lang-ar">هذه الصفحة لك إذا…</span></h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-item"><span class="fit-check">✓</span><span><span class="lang-en">Your company has 20–500 employees</span><span class="lang-ar">شركتك بين ٢٠ و ٥٠٠ موظف</span></span></div>
+      <div class="fit-item"><span class="fit-check">✓</span><span><span class="lang-en">You're under NCA, PDPL, or SAMA pressure — or expect to be</span><span class="lang-ar">تحت متطلبات NCA أو PDPL أو ساما — أو تتوقع أن تكون قريباً</span></span></div>
+      <div class="fit-item"><span class="fit-check">✓</span><span><span class="lang-en">You need practical deliverables — policies, reports, evidence packs</span><span class="lang-ar">تحتاج مخرجات عملية — سياسات، تقارير، حِزَم أدلة</span></span></div>
+      <div class="fit-item"><span class="fit-check">✓</span><span><span class="lang-en">You want the work done in weeks, not quarters</span><span class="lang-ar">تريد إنجاز العمل بأسابيع، لا بأرباع سنة</span></span></div>
+      <div class="fit-item"><span class="fit-check">✓</span><span><span class="lang-en">You value working with a Saudi practice that lives Saudi audits</span><span class="lang-ar">تُقدّر التعامل مع منشأة سعودية تعايش التدقيقات السعودية</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — PRODUCTIZED -->
+<section class="services-prod" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag"><span class="lang-en">Productized — fixed price, fixed scope</span><span class="lang-ar">خدمات جاهزة — سعر ثابت، نطاق محدد</span></div>
+      <h2><span class="lang-en">Five services that ship in days.</span><span class="lang-ar">خمس خدمات تُسلَّم بأيام معدودة.</span></h2>
+      <p class="section-sub"><span class="lang-en">Scope is fixed. Price is published. No discovery calls required to commit.</span><span class="lang-ar">النطاق محدد. السعر معلن. لا يلزم اتصال استكشاف للالتزام.</span></p>
+    </div>
+    <div class="services-grid">
+
+      <article class="service">
+        <div class="service-tag"><span class="lang-en">Policies</span><span class="lang-ar">سياسات</span></div>
+        <h3><span class="lang-en">Security Policy Pack</span><span class="lang-ar">حزمة السياسات الأمنية</span></h3>
+        <div class="service-meta"><span class="lang-en">10 NCA ECC-aligned policies · 7 days</span><span class="lang-ar">١٠ سياسات مطابقة لـ NCA ECC · ٧ أيام</span></div>
+        <div class="service-price-block">
+          <div class="service-price">2,900 <span class="unit">SAR</span></div>
+          <div class="service-price-sub"><span class="lang-en">One-time · VAT exclusive</span><span class="lang-ar">دفعة واحدة · غير شامل الضريبة</span></div>
+        </div>
+        <ul class="service-list">
+          <li><span class="lang-en">10 customized policies (Word + PDF)</span><span class="lang-ar">١٠ سياسات مخصصة (Word + PDF)</span></li>
+          <li><span class="lang-en">Tailored to your industry and size</span><span class="lang-ar">مناسبة لقطاع وحجم شركتك</span></li>
+          <li><span class="lang-en">Kickoff + review call included</span><span class="lang-ar">مكالمة انطلاق + مكالمة مراجعة</span></li>
+          <li><span class="lang-en">Ready for board sign-off</span><span class="lang-ar">جاهزة لاعتماد مجلس الإدارة</span></li>
+        </ul>
+        <div class="service-fit"><span class="lang-en">Right for you if you have no written policies and need the foundation first.</span><span class="lang-ar">مناسبة إذا لم تكن لديك سياسات مكتوبة وتحتاج الأساس أولاً.</span></div>
+        <button type="button" class="btn btn-primary" data-open="dialogCheck"><span class="lang-en">Start this service</span><span class="lang-ar">ابدأ الخدمة</span></button>
+      </article>
+
+      <article class="service">
+        <div class="service-tag"><span class="lang-en">PDPL</span><span class="lang-ar">PDPL</span></div>
+        <h3><span class="lang-en">PDPL Readiness Sprint</span><span class="lang-ar">PDPL Readiness Sprint</span></h3>
+        <div class="service-meta"><span class="lang-en">Full PDPL compliance pack · 10 days</span><span class="lang-ar">حزمة امتثال PDPL كاملة · ١٠ أيام</span></div>
+        <div class="service-price-block">
+          <div class="service-price">3,800 <span class="unit">SAR</span></div>
+          <div class="service-price-sub"><span class="lang-en">One-time · VAT exclusive</span><span class="lang-ar">دفعة واحدة · غير شامل الضريبة</span></div>
+        </div>
+        <ul class="service-list">
+          <li><span class="lang-en">Personal data mapping for your operations</span><span class="lang-ar">خريطة البيانات الشخصية لعملياتك</span></li>
+          <li><span class="lang-en">Privacy policy (Arabic + English)</span><span class="lang-ar">سياسة خصوصية (عربي + إنجليزي)</span></li>
+          <li><span class="lang-en">Data-subject rights procedure</span><span class="lang-ar">إجراءات حقوق أصحاب البيانات</span></li>
+          <li><span class="lang-en">Breach notification playbook</span><span class="lang-ar">دليل إجراءات إبلاغ التسرّب</span></li>
+          <li><span class="lang-en">Staff training brief</span><span class="lang-ar">إيجاز تدريبي للموظفين</span></li>
+        </ul>
+        <div class="service-fit"><span class="lang-en">Right for you if you collect customer data and need PDPL compliance quickly.</span><span class="lang-ar">مناسبة إذا كنت تجمع بيانات عملاء وتحتاج امتثالاً لـ PDPL في وقت قصير.</span></div>
+        <button type="button" class="btn btn-primary" data-open="dialogCheck"><span class="lang-en">Start this service</span><span class="lang-ar">ابدأ الخدمة</span></button>
+      </article>
+
+      <article class="service">
+        <div class="service-tag"><span class="lang-en">NCA ECC</span><span class="lang-ar">NCA ECC</span></div>
+        <h3><span class="lang-en">NCA ECC Express Audit</span><span class="lang-ar">تدقيق NCA ECC السريع</span></h3>
+        <div class="service-meta"><span class="lang-en">114-control audit + 90-day roadmap · 7 days</span><span class="lang-ar">تدقيق ١١٤ ضابطاً + خارطة طريق ٩٠ يوماً · ٧ أيام</span></div>
+        <div class="service-price-block">
+          <div class="service-price">4,500 <span class="unit">SAR</span></div>
+          <div class="service-price-sub"><span class="lang-en">One-time · VAT exclusive</span><span class="lang-ar">دفعة واحدة · غير شامل الضريبة</span></div>
+        </div>
+        <ul class="service-list">
+          <li><span class="lang-en">Remote audit covering all 114 ECC controls</span><span class="lang-ar">تدقيق عن بُعد يشمل الـ١١٤ ضابطاً</span></li>
+          <li><span class="lang-en">Maturity assessment across the 5 domains</span><span class="lang-ar">تقييم نضج للمجالات الخمسة</span></li>
+          <li><span class="lang-en">Prioritized gap analysis</span><span class="lang-ar">تحليل فجوات بأولويات</span></li>
+          <li><span class="lang-en">90-day remediation roadmap</span><span class="lang-ar">خارطة معالجة ٩٠ يوماً</span></li>
+          <li><span class="lang-en">5-page executive summary + 30-day follow-up</span><span class="lang-ar">ملخص تنفيذي + جلسة متابعة بعد شهر</span></li>
+        </ul>
+        <div class="service-fit"><span class="lang-en">Right for you if you have an audit on the horizon or want to know exactly where you stand.</span><span class="lang-ar">مناسبة إذا كان لديك تدقيق قادم أو تريد معرفة موقفك بدقة.</span></div>
+        <button type="button" class="btn btn-primary" data-open="dialogCheck"><span class="lang-en">Start this service</span><span class="lang-ar">ابدأ الخدمة</span></button>
+      </article>
+
+      <article class="service">
+        <div class="service-tag"><span class="lang-en">Incident Response</span><span class="lang-ar">استجابة الحوادث</span></div>
+        <h3><span class="lang-en">Incident Response Setup</span><span class="lang-ar">تجهيز الاستجابة للحوادث</span></h3>
+        <div class="service-meta"><span class="lang-en">IR plan + playbooks + tabletop · 5 days</span><span class="lang-ar">خطة IR + Playbooks + تمرين Tabletop · ٥ أيام</span></div>
+        <div class="service-price-block">
+          <div class="service-price">3,500 <span class="unit">SAR</span></div>
+          <div class="service-price-sub"><span class="lang-en">One-time · VAT exclusive</span><span class="lang-ar">دفعة واحدة · غير شامل الضريبة</span></div>
+        </div>
+        <ul class="service-list">
+          <li><span class="lang-en">Incident response plan tailored to your context</span><span class="lang-ar">خطة استجابة مفصّلة لسياق شركتك</span></li>
+          <li><span class="lang-en">3 playbooks (ransomware, phishing, data leak)</span><span class="lang-ar">٣ Playbooks (فدية، تصيّد، تسريب بيانات)</span></li>
+          <li><span class="lang-en">Roles, escalation paths, regulator notification timelines</span><span class="lang-ar">الأدوار، مسارات التصعيد، توقيتات إبلاغ الجهات</span></li>
+          <li><span class="lang-en">1 tabletop exercise with your team</span><span class="lang-ar">تمرين Tabletop واحد مع فريقك</span></li>
+        </ul>
+        <div class="service-fit"><span class="lang-en">Right for you if you have no formal IR process or need to satisfy an audit requirement.</span><span class="lang-ar">مناسبة إذا لم تكن لديك عملية استجابة موثقة أو تحتاج تلبية متطلب تدقيق.</span></div>
+        <button type="button" class="btn btn-primary" data-open="dialogCheck"><span class="lang-en">Start this service</span><span class="lang-ar">ابدأ الخدمة</span></button>
+      </article>
+
+      <article class="service">
+        <div class="service-tag"><span class="lang-en">Vendor risk</span><span class="lang-ar">مخاطر المورّدين</span></div>
+        <h3><span class="lang-en">Vendor Risk Assessment</span><span class="lang-ar">تقييم مخاطر المورّدين</span></h3>
+        <div class="service-meta"><span class="lang-en">Single-vendor assessment · 4 days</span><span class="lang-ar">تقييم مورّد واحد · ٤ أيام</span></div>
+        <div class="service-price-block">
+          <div class="service-price">1,900 <span class="unit">SAR</span></div>
+          <div class="service-price-sub"><span class="lang-en">Per vendor · VAT exclusive</span><span class="lang-ar">لكل مورّد · غير شامل الضريبة</span></div>
+        </div>
+        <ul class="service-list">
+          <li><span class="lang-en">Standardized vendor questionnaire</span><span class="lang-ar">استبيان مورّد قياسي</span></li>
+          <li><span class="lang-en">Evidence collection and review</span><span class="lang-ar">جمع ومراجعة الأدلة</span></li>
+          <li><span class="lang-en">Risk rating with rationale</span><span class="lang-ar">تقييم مخاطر مع المبررات</span></li>
+          <li><span class="lang-en">Recommendation: accept, monitor, replace</span><span class="lang-ar">توصية: قبول، متابعة، استبدال</span></li>
+        </ul>
+        <div class="service-fit"><span class="lang-en">Right for you if a regulator or customer asked you to evidence vendor due diligence.</span><span class="lang-ar">مناسبة إذا طلب منك تنظيم أو عميل توثيق العناية الواجبة لمورّدين.</span></div>
+        <button type="button" class="btn btn-primary" data-open="dialogCheck"><span class="lang-en">Start this service</span><span class="lang-ar">ابدأ الخدمة</span></button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — SCOPE-BASED -->
+<section class="services-scope">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag"><span class="lang-en">Scope-based — starting from</span><span class="lang-ar">حسب النطاق — يبدأ من</span></div>
+      <h2><span class="lang-en">Technical assessments &amp; broader audits.</span><span class="lang-ar">تقييمات تقنية وتدقيقات تنظيمية أوسع.</span></h2>
+      <p class="section-sub"><span class="lang-en">When scope varies with environment size, we publish a starting price and tailor the engagement to your actual estate. Price grows with the real surface — not with discovery time.</span><span class="lang-ar">حين يتغيّر النطاق بحسب حجم البيئة، نعلن السعر الابتدائي ونصمّم المشروع بناءً على واقعك. السعر يرتفع مع السطح الفعلي، لا مع وقت الاستكشاف.</span></p>
+    </div>
+
+    <div class="scope-category">
+      <div class="scope-category-head">
+        <div class="scope-category-num">A</div>
+        <div class="scope-category-title"><span class="lang-en">Penetration testing &amp; technical reviews</span><span class="lang-ar">اختبار الاختراق والمراجعات التقنية</span></div>
+      </div>
+      <div class="scope-grid">
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">VAPT — Web Application</span><span class="lang-ar">اختبار اختراق — تطبيق ويب</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>18,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Single app, authenticated &amp; unauthenticated, OWASP Top 10 + business logic</span><span class="lang-ar">تطبيق واحد، اختبار مع وبدون مصادقة، OWASP Top 10 + منطق الأعمال</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">VAPT — Mobile Application</span><span class="lang-ar">اختبار اختراق — تطبيق جوال</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>22,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">iOS or Android, OWASP MASVS, static + dynamic analysis</span><span class="lang-ar">iOS أو Android، OWASP MASVS، تحليل ساكن وديناميكي</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">VAPT — API</span><span class="lang-ar">اختبار اختراق — API</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>14,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">REST or GraphQL, OWASP API Top 10, auth and authorization</span><span class="lang-ar">REST أو GraphQL، OWASP API Top 10، المصادقة والتفويض</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">VAPT — External Network</span><span class="lang-ar">اختبار اختراق — شبكة خارجية</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>15,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Internet-facing footprint, recon + targeted exploitation</span><span class="lang-ar">السطح المكشوف للإنترنت، استطلاع واستغلال موجّه</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">VAPT — Internal Network</span><span class="lang-ar">اختبار اختراق — شبكة داخلية</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>20,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Assumed-breach internal test, lateral movement, AD assessment</span><span class="lang-ar">اختبار داخلي بافتراض الاختراق، التحرك الجانبي، تقييم AD</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">Architecture &amp; Configuration Review</span><span class="lang-ar">مراجعة المعمارية والإعدادات</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>12,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Cloud (AWS/Azure) or on-prem, security architecture review against best practice</span><span class="lang-ar">سحابة (AWS/Azure) أو On-Prem، مراجعة المعمارية مقابل الممارسات الموصى بها</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">Firewall Configuration Review</span><span class="lang-ar">مراجعة إعدادات الجدار الناري</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>7,500 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Per firewall, rule-base review, segmentation effectiveness, CIS benchmarks</span><span class="lang-ar">لكل جدار، مراجعة قواعد، فعالية التجزئة، معايير CIS</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">Source Code Review (SAST + Manual)</span><span class="lang-ar">مراجعة الكود المصدري (SAST + يدوي)</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>18,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Up to 50K LOC, automated scanning + manual review of critical paths</span><span class="lang-ar">حتى ٥٠ ألف سطر، فحص آلي + مراجعة يدوية للمسارات الحرجة</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scope-category">
+      <div class="scope-category-head">
+        <div class="scope-category-num">B</div>
+        <div class="scope-category-title"><span class="lang-en">Regulatory audits &amp; maturity assessments</span><span class="lang-ar">التدقيقات التنظيمية وتقييمات النضج</span></div>
+      </div>
+      <div class="scope-grid">
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">NCA CSCC — Critical Systems Cybersecurity Controls</span><span class="lang-ar">NCA CSCC — ضوابط الأمن السيبراني للأنظمة الحساسة</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>28,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Additional layer over ECC for systems classified as critical (higher-rigor controls)</span><span class="lang-ar">طبقة إضافية فوق ECC للأنظمة المُصنَّفة حساسة (ضوابط بمستوى صرامة أعلى)</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">NCA CCC — Cloud Cybersecurity Controls</span><span class="lang-ar">NCA CCC — ضوابط الأمن السيبراني للحوسبة السحابية</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>20,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Additional layer over ECC for cloud-hosted workloads (CSP &amp; tenant responsibilities)</span><span class="lang-ar">طبقة إضافية فوق ECC للأحمال المُستضافة سحابياً (مسؤوليات المزوّد والعميل)</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">NCA DCC — Data Cybersecurity Controls</span><span class="lang-ar">NCA DCC — ضوابط أمن البيانات</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>15,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Additional layer over ECC for data lifecycle, classification, and residency</span><span class="lang-ar">طبقة إضافية فوق ECC لدورة حياة البيانات وتصنيفها وإقامتها</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">SAMA CSF Maturity Assessment</span><span class="lang-ar">تقييم نضج إطار ساما السيبراني</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>30,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Full SAMA CSF mapping, maturity score per domain, board-ready report</span><span class="lang-ar">ربط كامل بإطار ساما، درجة نضج لكل مجال، تقرير جاهز لمجلس الإدارة</span></div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card-name"><span class="lang-en">ISO/IEC 27001 Gap Analysis</span><span class="lang-ar">تحليل فجوات ISO/IEC 27001</span></div>
+          <div class="scope-card-price"><span class="from"><span class="lang-en">From</span><span class="lang-ar">يبدأ من</span></span>20,000 SAR</div>
+          <div class="scope-card-meta"><span class="lang-en">Pre-certification gap analysis, Annex A coverage, action roadmap</span><span class="lang-ar">تحليل فجوات قبل الشهادة، تغطية الملحق A، خارطة عمل</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scope-cta">
+      <p>
+        <span class="lang-en">All scope-based engagements start with a free 20-minute scoping call. We send a sized proposal within 48 hours — no obligation.</span>
+        <span class="lang-ar">كل مشاريع النطاق تبدأ بمكالمة تحديد نطاق مجانية مدتها ٢٠ دقيقة. نرسل عرضاً مقاساً خلال ٤٨ ساعة — دون التزام.</span>
+      </p>
+      <button type="button" class="btn btn-secondary" data-open="dialogScope">
+        <span class="lang-en">Request a scoping call</span>
+        <span class="lang-ar">اطلب مكالمة تحديد النطاق</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- vCISO -->
+<section class="vciso" id="vciso">
+  <div class="container">
+    <div class="section-head" style="text-align:left;max-width:680px;margin-bottom:0;">
+      <div class="section-tag" style="text-align:left;"><span class="lang-en">Ongoing leadership</span><span class="lang-ar">قيادة أمنية مستمرة</span></div>
+      <h2><span class="lang-en">vCISO — embedded security leadership.</span><span class="lang-ar">vCISO — قيادة أمنية مدمجة.</span></h2>
+      <p class="section-sub"><span class="lang-en">A senior security partner on retainer — without the cost or commitment of a full-time hire.</span><span class="lang-ar">شريك أمن سيبراني خبير بنظام Retainer — بدون تكلفة أو التزام التوظيف بدوام كامل.</span></p>
+    </div>
+    <div class="vciso-grid">
+      <div class="vciso-body">
+        <p><span class="lang-en">For companies that need security thinking present in board decisions, vendor reviews, audit prep, and incident calls — as an ongoing relationship rather than a project that ends.</span><span class="lang-ar">للشركات التي تحتاج التفكير الأمني حاضراً في قرارات مجلس الإدارة، ومراجعات المورّدين، وتجهيز التدقيقات، ومكالمات الحوادث — كعلاقة مستمرة لا مشروعاً ينتهي.</span></p>
+        <ul class="vciso-list">
+          <li><span class="lang-en">Strategic security roadmap aligned with your business</span><span class="lang-ar">خارطة طريق أمنية استراتيجية متوافقة مع أعمالك</span></li>
+          <li><span class="lang-en">Monthly board-ready security report</span><span class="lang-ar">تقرير أمني شهري جاهز لمجلس الإدارة</span></li>
+          <li><span class="lang-en">Audit prep (NCA, PDPL, SAMA) and stakeholder management</span><span class="lang-ar">تجهيز التدقيقات (NCA، PDPL، ساما) وإدارة العلاقات</span></li>
+          <li><span class="lang-en">Vendor risk decisions, contract reviews, security clauses</span><span class="lang-ar">قرارات مخاطر المورّدين، مراجعة العقود، بنود الأمن</span></li>
+          <li><span class="lang-en">Incident triage and post-incident review</span><span class="lang-ar">احتواء الحوادث والمراجعة بعد الحادثة</span></li>
+          <li><span class="lang-en">On-call advisory — email, call, or chat — within agreed SLA</span><span class="lang-ar">استشارات فورية — بريد، اتصال، أو محادثة — ضمن SLA متفق عليه</span></li>
+        </ul>
+        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 20px;"><span class="lang-en">Engagement structure and rate are scoped against your size, sector, and current maturity. Most clients run 6 or 12-month engagements with monthly retainer fees.</span><span class="lang-ar">بنية الارتباط والمعدّل تُحدد حسب حجمك، قطاعك، ومستوى نضجك الحالي. غالب العملاء يرتبطون لمدة ٦ أو ١٢ شهراً برسوم Retainer شهرية.</span></p>
+      </div>
+      <div class="vciso-card">
+        <div class="label"><span class="lang-en">vCISO Engagement</span><span class="lang-ar">ارتباط vCISO</span></div>
+        <h3><span class="lang-en">Tailored to your maturity, not a price list.</span><span class="lang-ar">مفصّل على نضجك، لا قائمة أسعار جاهزة.</span></h3>
+        <p><span class="lang-en">Share your context — size, sector, top concerns, audit horizon. We respond with a clear retainer proposal, scope, and rate within 48 hours.</span><span class="lang-ar">شاركنا سياقك — الحجم، القطاع، أبرز المخاوف، أفق التدقيق. نعود إليك بعرض Retainer واضح، النطاق، والسعر خلال ٤٨ ساعة.</span></p>
+        <button type="button" class="btn btn-primary" data-open="dialogVCISO"><span class="lang-en">Discuss a vCISO engagement</span><span class="lang-ar">ناقش ارتباط vCISO</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="section-tag"><span class="lang-en">About Hisn</span><span class="lang-ar">عن حِصن</span></div>
+      <h2><span class="lang-en">A Saudi practice with one purpose.</span><span class="lang-ar">منشأة سعودية بهدف واحد.</span></h2>
+      <p><span class="lang-en">Hisn is a Saudi cybersecurity practice, built by practitioners who work inside Saudi organizations and have lived their audits and operations firsthand. Our mission is to contribute to raising the Kingdom's cybersecurity maturity by serving mid-market companies with practical deliverables at fair, transparent prices.</span><span class="lang-ar">حِصن منشأة سعودية متخصصة في الأمن السيبراني، بناها ممارسون يعملون داخل منشآت سعودية ويعايشون تدقيقاتها وعملياتها عن قرب. هدفنا الإسهام في رفع نضج الأمن السيبراني في المملكة من خلال خدمة الشركات متوسطة الحجم بمخرجات عملية وأسعار عادلة وشفافة.</span></p>
+      <p><span class="lang-en">Our deliverables align with NCA, PDPL, SAMA, and ISO 27001 — the frameworks Saudi companies operate under. Structured, defensible work that withstands regulatory review.</span><span class="lang-ar">مخرجاتنا مرتبطة بأطر NCA و PDPL وساما و ISO 27001 — وهي الأطر التي تعمل بموجبها الشركات السعودية. عمل منظَّم، قابل للدفاع، يصمد أمام المراجعات التنظيمية.</span></p>
+
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <strong><span class="lang-en">Saudi-rooted</span><span class="lang-ar">جذور سعودية</span></strong>
+          <span><span class="lang-en">Built by Saudi practitioners who understand the local regulatory landscape and business context.</span><span class="lang-ar">بناها ممارسون سعوديون يفهمون المشهد التنظيمي المحلي وسياق الأعمال.</span></span>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <strong><span class="lang-en">Practical depth</span><span class="lang-ar">عمق عملي</span></strong>
+          <span><span class="lang-en">Every deliverable maps to a real control, a real regulator, and a real next step you can act on.</span><span class="lang-ar">كل مخرج مرتبط بضابط حقيقي، جهة حقيقية، وخطوة تالية يمكن تنفيذها.</span></span>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <strong><span class="lang-en">Fair, transparent pricing</span><span class="lang-ar">تسعير عادل وشفّاف</span></strong>
+          <span><span class="lang-en">Pricing reflects the actual work involved. Scope and timeline are shared transparently before any commitment.</span><span class="lang-ar">السعر يعكس الجهد الفعلي. النطاق والجدول الزمني يُشاركان بشفافية قبل أي التزام.</span></span>
+        </div>
+      </div>
+
+      <div class="about-mark">
+        <span class="ar">حِصن</span> · Hisn ·
+        <span class="lang-en">Saudi-built cybersecurity</span>
+        <span class="lang-ar">أمن سيبراني سعودي</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag"><span class="lang-en">Frequently asked</span><span class="lang-ar">الأسئلة الشائعة</span></div>
+      <h2><span class="lang-en">Questions every client asks first.</span><span class="lang-ar">أسئلة يسألها كل عميل في البداية.</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="lang-en">Why publish fixed prices instead of quoting hourly?</span><span class="lang-ar">لماذا تنشرون أسعاراً ثابتة بدلاً من التسعير بالساعة؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Transparency. You know the number before we start, and we own the outcome regardless of hours spent. For work where scope genuinely varies (like a pentest), we publish a starting price and tailor the engagement from there.</span><span class="lang-ar">الشفافية. تعرف الرقم قبل البداية، ونحن المسؤولون عن النتيجة بغض النظر عن الساعات. وللأعمال التي يتغيّر نطاقها فعلياً (مثل اختبار الاختراق)، ننشر السعر الابتدائي ونحدد المشروع منه.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">Do you deliver theory or applicable output?</span><span class="lang-ar">هل تسلّمون نظرية أم مخرجات قابلة للتطبيق؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Every deliverable is applicable on day one. Policies are written for board sign-off. Audit reports come with prioritized remediation. Playbooks are ready to use during an actual incident.</span><span class="lang-ar">كل مخرج قابل للتطبيق منذ يومه الأول. السياسات مكتوبة لاعتماد المجلس. تقارير التدقيق تأتي مع معالجات بأولويات. الـ Playbooks جاهزة للاستخدام خلال حادث فعلي.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">My company is under 20 employees — can you still help?</span><span class="lang-ar">شركتي أقل من ٢٠ موظفاً — هل يمكنكم مساعدتي؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Sometimes yes. Book a Readiness Check and we'll tell you honestly whether we're the right fit for your stage.</span><span class="lang-ar">أحياناً نعم. احجز فحص الجاهزية وسنخبرك بصراحة هل نحن المناسبون لمرحلتك الحالية.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">Do you guarantee regulatory compliance?</span><span class="lang-ar">هل تضمنون الامتثال التنظيمي؟</span></summary>
+        <div class="faq-body"><span class="lang-en">We guarantee the quality of the deliverable — the policies, the audit, the report. Compliance itself depends on how you implement and operate the controls. We provide everything needed to get there.</span><span class="lang-ar">نضمن جودة المخرج — السياسات، التدقيق، التقرير. الامتثال نفسه يعتمد على كيفية تطبيقك وتشغيلك للضوابط. نوفّر كل ما يلزم للوصول.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">How does pentest scope translate to price?</span><span class="lang-ar">كيف يتحوّل نطاق اختبار الاختراق إلى سعر؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Three factors: surface size (pages, endpoints, IP count), authentication complexity (number of roles), and depth (OWASP Top 10 only vs. business-logic testing). After a 20-minute scoping call we send a fixed-price proposal — no hourly billing once the proposal is signed.</span><span class="lang-ar">ثلاثة عوامل: حجم السطح (الصفحات، نقاط النهاية، عدد IPs)، تعقيد المصادقة (عدد الأدوار)، والعمق (OWASP Top 10 فقط أم اختبار منطق الأعمال). بعد مكالمة تحديد نطاق ٢٠ دقيقة نرسل عرضاً ثابت السعر — لا تسعير ساعي بعد توقيع العرض.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">What's the difference between NCA ECC, CSCC, CCC, and DCC?</span><span class="lang-ar">ما الفرق بين NCA ECC و CSCC و CCC و DCC؟</span></summary>
+        <div class="faq-body"><span class="lang-en">ECC is the baseline — 114 essential cybersecurity controls applicable broadly. CSCC adds higher-rigor controls for systems classified as critical. CCC adds cloud-specific controls when workloads run in the cloud. DCC adds controls for data lifecycle and classification. The additional frameworks layer on top of ECC where they apply to your environment.</span><span class="lang-ar">ECC هو الأساس — ١١٤ ضابطاً جوهرياً تنطبق بشكل واسع. CSCC تضيف ضوابط أعلى صرامة للأنظمة المُصنَّفة حساسة. CCC تضيف ضوابط خاصة بالسحابة للأحمال السحابية. DCC تضيف ضوابط لدورة حياة البيانات وتصنيفها. الأطر الإضافية تُبنى فوق ECC حيث تنطبق على بيئتك.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">How does payment work?</span><span class="lang-ar">كيف تتم عملية الدفع؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Bank transfer or Mada. 50% upfront, 50% on delivery for one-time engagements. Monthly invoicing for vCISO retainers. VAT invoice issued for all corporate clients.</span><span class="lang-ar">تحويل بنكي أو مدى. ٥٠٪ مقدماً، ٥٠٪ عند التسليم للارتباطات لمرة واحدة. فوترة شهرية لارتباطات vCISO. تصدر فاتورة ضريبية لكل العملاء من الشركات.</span></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="lang-en">Who signs the contract on your side?</span><span class="lang-ar">من يوقّع العقد من جانبكم؟</span></summary>
+        <div class="faq-body"><span class="lang-en">Hisn operates under a Saudi Freelancing Permit (وثيقة العمل الحر). The practitioner behind Hisn signs and invoices personally; Hisn is the operating brand.</span><span class="lang-ar">حِصن يعمل تحت وثيقة العمل الحر. الممارس خلف حِصن يوقّع ويصدر الفاتورة باسمه؛ حِصن هو الاسم التشغيلي للممارسة.</span></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="check">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="section-tag" style="text-align:center;"><span class="lang-en">Free · 5 minutes · 24-hour turnaround</span><span class="lang-ar">مجاناً · ٥ دقائق · ٢٤ ساعة</span></div>
+      <h2><span class="lang-en">Not sure which service fits? Start here.</span><span class="lang-ar">غير متأكد أي خدمة تناسبك؟ ابدأ من هنا.</span></h2>
+      <p class="lead"><span class="lang-en">Seven short questions about your context. We email you a one-page Readiness Check within 24 hours — your top exposures, whether you can address them in-house, and which Hisn service (if any) actually fits where you are.</span><span class="lang-ar">٧ أسئلة قصيرة عن سياقك. نرسل لك تقرير جاهزية صفحة واحدة خلال ٢٤ ساعة — أكبر المخاطر عندك، هل تستطيع معالجتها داخلياً، وأي خدمة من حِصن (إن وجدت) تناسب وضعك فعلاً.</span></p>
+
+      <div class="check-features">
+        <div class="check-feature">
+          <strong><span class="lang-en">No sales call</span><span class="lang-ar">بدون مكالمة بيع</span></strong>
+          <span><span class="lang-en">We don't call unless you ask us to. The report is the report.</span><span class="lang-ar">لا نتصل ما لم تطلب. التقرير هو التقرير.</span></span>
+        </div>
+        <div class="check-feature">
+          <strong><span class="lang-en">Honest assessment</span><span class="lang-ar">تقييم صريح</span></strong>
+          <span><span class="lang-en">If our services don't fit your stage, we say so and suggest what would.</span><span class="lang-ar">إذا لم تناسبك خدماتنا، نخبرك ونوجّهك إلى ما يناسبك.</span></span>
+        </div>
+        <div class="check-feature">
+          <strong><span class="lang-en">Private</span><span class="lang-ar">خصوصية</span></strong>
+          <span><span class="lang-en">Your answers stay with Hisn. We don't sell email lists. Ever.</span><span class="lang-ar">إجاباتك تبقى مع حِصن. لا نبيع قوائم البريد. أبداً.</span></span>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" data-open="dialogCheck">
+        <span class="lang-en">Start the 5-minute Check →</span>
+        <span class="lang-ar">ابدأ الفحص — ٥ دقائق ←</span>
+      </button>
+      <div class="final-cta-meta">
+        <span class="lang-en">Prefer email? </span>
+        <span class="lang-ar">تفضّل التواصل بالبريد؟ </span>
+        <a href="mailto:hello@hisnsec.com">hello@hisnsec.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="ar-mark">حِصن</span>· Hisn ·
+        <span class="lang-en" style="color:rgba(255,255,255,0.6);font-weight:400;">Cybersecurity for Saudi mid-market.</span>
+        <span class="lang-ar" style="color:rgba(255,255,255,0.6);font-weight:400;">أمن سيبراني للسوق السعودي المتوسط.</span>
+      </div>
+      <div>© <span id="year"></span> Hisn · <a href="mailto:hello@hisnsec.com">hello@hisnsec.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== DIALOG: READINESS CHECK ====== -->
+<dialog class="form-dialog" id="dialogCheck">
+  <div class="dlg-head">
+    <button class="form-close" type="button" data-close aria-label="Close">×</button>
+    <h3><span class="lang-en">Readiness Check — 7 questions, 5 minutes</span><span class="lang-ar">فحص الجاهزية — ٧ أسئلة، ٥ دقائق</span></h3>
+    <p><span class="lang-en">We email a 1-page report to you within 24 hours. No sales call.</span><span class="lang-ar">نرسل لك تقرير صفحة واحدة خلال ٢٤ ساعة. بدون مكالمة بيع.</span></p>
+  </div>
+  <form name="readiness-check" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="readiness-check">
+    <p class="honeypot"><label>Don't fill: <input name="bot-field"></label></p>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Company name<span class="req">*</span></span><span class="lang-ar">اسم الشركة<span class="req">*</span></span></label>
+        <input type="text" name="company" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Industry<span class="req">*</span></span><span class="lang-ar">القطاع<span class="req">*</span></span></label>
+        <select name="industry" required>
+          <option value="">— —</option>
+          <option>Fintech</option>
+          <option>E-commerce</option>
+          <option>Healthtech</option>
+          <option>B2B SaaS</option>
+          <option>PropTech / Real Estate</option>
+          <option>Manufacturing</option>
+          <option>Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Number of employees<span class="req">*</span></span><span class="lang-ar">عدد الموظفين<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="employees" value="1-20" required> 1–20</label>
+        <label><input type="radio" name="employees" value="21-50"> 21–50</label>
+        <label><input type="radio" name="employees" value="51-100"> 51–100</label>
+        <label><input type="radio" name="employees" value="101-200"> 101–200</label>
+        <label><input type="radio" name="employees" value="201-500"> 201–500</label>
+        <label><input type="radio" name="employees" value="500+"> 500+</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Regulatory pressure (select all that apply)<span class="req">*</span></span><span class="lang-ar">الضغوط التنظيمية (اختر كل ما ينطبق)<span class="req">*</span></span></label>
+      <div class="check-grid">
+        <label><input type="checkbox" name="regulatory" value="NCA ECC"> NCA ECC</label>
+        <label><input type="checkbox" name="regulatory" value="PDPL"> PDPL (SDAIA)</label>
+        <label><input type="checkbox" name="regulatory" value="SAMA CSF"> SAMA CSF</label>
+        <label><input type="checkbox" name="regulatory" value="CMA"> CMA</label>
+        <label><input type="checkbox" name="regulatory" value="Customer asking"><span class="lang-en">Customer asking</span><span class="lang-ar">عميل يطلب</span></label>
+        <label><input type="checkbox" name="regulatory" value="Bank/vendor asking"><span class="lang-en">Bank / vendor asking</span><span class="lang-ar">بنك/مورّد يطلب</span></label>
+        <label><input type="checkbox" name="regulatory" value="None"><span class="lang-en">None known</span><span class="lang-ar">لا شيء معروف</span></label>
+        <label><input type="checkbox" name="regulatory" value="Not sure"><span class="lang-en">Not sure</span><span class="lang-ar">غير متأكد</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Any cybersecurity audit or gap assessment in the last 12 months?<span class="req">*</span></span><span class="lang-ar">هل أجريت تدقيقاً أو تقييم فجوة آخر ١٢ شهراً؟<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="audit_history" value="Yes — clean" required><span class="lang-en">Yes — clean</span><span class="lang-ar">نعم — نظيف</span></label>
+        <label><input type="radio" name="audit_history" value="Yes — findings"><span class="lang-en">Yes — with findings</span><span class="lang-ar">نعم — مع ملاحظات</span></label>
+        <label><input type="radio" name="audit_history" value="No"><span class="lang-en">No</span><span class="lang-ar">لا</span></label>
+        <label><input type="radio" name="audit_history" value="Not sure"><span class="lang-en">Not sure</span><span class="lang-ar">غير متأكد</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Biggest current concern<span class="req">*</span></span><span class="lang-ar">أكبر شاغل حالي<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="concern" value="Incoming audit" required><span class="lang-en">Incoming audit</span><span class="lang-ar">تدقيق قادم</span></label>
+        <label><input type="radio" name="concern" value="Customer evidence"><span class="lang-en">Customer asking for evidence</span><span class="lang-ar">عميل يطلب أدلة</span></label>
+        <label><input type="radio" name="concern" value="Recent incident"><span class="lang-en">Recent incident</span><span class="lang-ar">حادث قريب</span></label>
+        <label><input type="radio" name="concern" value="Missing documentation"><span class="lang-en">Missing documentation</span><span class="lang-ar">توثيق ناقص</span></label>
+        <label><input type="radio" name="concern" value="PDPL readiness"><span class="lang-en">PDPL readiness</span><span class="lang-ar">جاهزية PDPL</span></label>
+        <label><input type="radio" name="concern" value="Don't know where we stand"><span class="lang-en">Don't know where we stand</span><span class="lang-ar">لا أعرف موقفي</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Budget range for this need (SAR)<span class="req">*</span></span><span class="lang-ar">الميزانية التقريبية لهذه الحاجة (ريال)<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="budget" value="Under 1,000" required><span class="lang-en">Under 1,000</span><span class="lang-ar">أقل من ١٠٠٠</span></label>
+        <label><input type="radio" name="budget" value="1,000-3,000"> 1,000–3,000</label>
+        <label><input type="radio" name="budget" value="3,000-7,500"> 3,000–7,500</label>
+        <label><input type="radio" name="budget" value="7,500-20,000"> 7,500–20,000</label>
+        <label><input type="radio" name="budget" value="20,000+"> 20,000+</label>
+        <label><input type="radio" name="budget" value="Not decided"><span class="lang-en">Not decided</span><span class="lang-ar">لم تتقرر</span></label>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Your name<span class="req">*</span></span><span class="lang-ar">اسمك<span class="req">*</span></span></label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Work email<span class="req">*</span></span><span class="lang-ar">البريد الوظيفي<span class="req">*</span></span></label>
+        <input type="email" name="email" required>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Role (optional)</span><span class="lang-ar">الدور (اختياري)</span></label>
+        <input type="text" name="role">
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Phone (optional)</span><span class="lang-ar">الجوال (اختياري)</span></label>
+        <input type="tel" name="phone">
+      </div>
+    </div>
+
+    <div class="form-error" data-form-error><span class="lang-en">Something went wrong. Please email hello@hisnsec.com directly.</span><span class="lang-ar">حدث خطأ. الرجاء التواصل عبر hello@hisnsec.com مباشرة.</span></div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-ghost" data-close><span class="lang-en">Cancel</span><span class="lang-ar">إلغاء</span></button>
+      <button type="submit" class="btn btn-primary"><span class="lang-en">Submit</span><span class="lang-ar">إرسال</span></button>
+    </div>
+  </form>
+  <div class="form-success" hidden>
+    <div class="check-icon">✓</div>
+    <h3><span class="lang-en">Got it — your Check is on the way.</span><span class="lang-ar">استلمنا — تقريرك قادم.</span></h3>
+    <p><span class="lang-en">Your 1-page Readiness Check will land in your inbox within 24 hours.</span><span class="lang-ar">تقرير جاهزية صفحة واحدة سيصلك خلال ٢٤ ساعة.</span></p>
+    <button type="button" class="btn btn-primary" data-close><span class="lang-en">Close</span><span class="lang-ar">إغلاق</span></button>
+  </div>
+</dialog>
+
+<!-- ====== DIALOG: vCISO ====== -->
+<dialog class="form-dialog" id="dialogVCISO">
+  <div class="dlg-head">
+    <button class="form-close" type="button" data-close aria-label="Close">×</button>
+    <h3><span class="lang-en">vCISO Engagement Inquiry</span><span class="lang-ar">استفسار ارتباط vCISO</span></h3>
+    <p><span class="lang-en">Share your context. We respond with a scoped retainer proposal within 48 hours.</span><span class="lang-ar">شاركنا سياقك. نرد بعرض Retainer محدد النطاق خلال ٤٨ ساعة.</span></p>
+  </div>
+  <form name="vciso-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="vciso-inquiry">
+    <p class="honeypot"><label>Don't fill: <input name="bot-field"></label></p>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Company name<span class="req">*</span></span><span class="lang-ar">اسم الشركة<span class="req">*</span></span></label>
+        <input type="text" name="company" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Industry<span class="req">*</span></span><span class="lang-ar">القطاع<span class="req">*</span></span></label>
+        <select name="industry" required>
+          <option value="">— —</option>
+          <option>Fintech</option><option>E-commerce</option><option>Healthtech</option>
+          <option>B2B SaaS</option><option>PropTech / Real Estate</option>
+          <option>Manufacturing</option><option>Services</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Number of employees<span class="req">*</span></span><span class="lang-ar">عدد الموظفين<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="employees" value="1-20" required> 1–20</label>
+        <label><input type="radio" name="employees" value="21-50"> 21–50</label>
+        <label><input type="radio" name="employees" value="51-100"> 51–100</label>
+        <label><input type="radio" name="employees" value="101-200"> 101–200</label>
+        <label><input type="radio" name="employees" value="201-500"> 201–500</label>
+        <label><input type="radio" name="employees" value="500+"> 500+</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Current security setup</span><span class="lang-ar">الإعداد الأمني الحالي</span></label>
+      <textarea name="current_setup" placeholder="In-house team / external advisor / nothing yet / mix..."></textarea>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Top vCISO focus areas (select all that apply)<span class="req">*</span></span><span class="lang-ar">أبرز ما ينبغي أن يركّز عليه vCISO<span class="req">*</span></span></label>
+      <div class="check-grid">
+        <label><input type="checkbox" name="focus" value="Compliance"><span class="lang-en">Compliance / audit prep</span><span class="lang-ar">الامتثال / تجهيز التدقيقات</span></label>
+        <label><input type="checkbox" name="focus" value="Strategy"><span class="lang-en">Strategy &amp; roadmap</span><span class="lang-ar">الاستراتيجية وخارطة الطريق</span></label>
+        <label><input type="checkbox" name="focus" value="Vendor risk"><span class="lang-en">Vendor &amp; contract risk</span><span class="lang-ar">مخاطر المورّدين والعقود</span></label>
+        <label><input type="checkbox" name="focus" value="IR readiness"><span class="lang-en">Incident response readiness</span><span class="lang-ar">جاهزية الاستجابة للحوادث</span></label>
+        <label><input type="checkbox" name="focus" value="Board reporting"><span class="lang-en">Board / stakeholder reporting</span><span class="lang-ar">تقارير مجلس الإدارة</span></label>
+        <label><input type="checkbox" name="focus" value="Other"><span class="lang-en">Other</span><span class="lang-ar">أخرى</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Audit or regulatory deadline on the horizon (if any)</span><span class="lang-ar">تدقيق أو موعد تنظيمي قادم (إن وُجد)</span></label>
+      <input type="text" name="deadline" placeholder="e.g. SAMA review Q4 2026">
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Engagement length you're considering<span class="req">*</span></span><span class="lang-ar">مدة الارتباط المقترحة<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="length" value="3 months" required><span class="lang-en">3 months</span><span class="lang-ar">٣ أشهر</span></label>
+        <label><input type="radio" name="length" value="6 months"><span class="lang-en">6 months</span><span class="lang-ar">٦ أشهر</span></label>
+        <label><input type="radio" name="length" value="12 months"><span class="lang-en">12 months</span><span class="lang-ar">١٢ شهراً</span></label>
+        <label><input type="radio" name="length" value="open"><span class="lang-en">Open / not decided</span><span class="lang-ar">مفتوح / لم يتقرر</span></label>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Your name<span class="req">*</span></span><span class="lang-ar">اسمك<span class="req">*</span></span></label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Work email<span class="req">*</span></span><span class="lang-ar">البريد الوظيفي<span class="req">*</span></span></label>
+        <input type="email" name="email" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Phone (optional)</span><span class="lang-ar">الجوال (اختياري)</span></label>
+      <input type="tel" name="phone">
+    </div>
+
+    <div class="form-error" data-form-error><span class="lang-en">Something went wrong. Please email hello@hisnsec.com directly.</span><span class="lang-ar">حدث خطأ. الرجاء التواصل عبر hello@hisnsec.com مباشرة.</span></div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-ghost" data-close><span class="lang-en">Cancel</span><span class="lang-ar">إلغاء</span></button>
+      <button type="submit" class="btn btn-primary"><span class="lang-en">Submit</span><span class="lang-ar">إرسال</span></button>
+    </div>
+  </form>
+  <div class="form-success" hidden>
+    <div class="check-icon">✓</div>
+    <h3><span class="lang-en">Got it — we'll be in touch.</span><span class="lang-ar">استلمنا — سنتواصل قريباً.</span></h3>
+    <p><span class="lang-en">Expect a scoped vCISO proposal within 48 hours.</span><span class="lang-ar">سيصلك عرض vCISO محدد النطاق خلال ٤٨ ساعة.</span></p>
+    <button type="button" class="btn btn-primary" data-close><span class="lang-en">Close</span><span class="lang-ar">إغلاق</span></button>
+  </div>
+</dialog>
+
+<!-- ====== DIALOG: SCOPE-BASED ====== -->
+<dialog class="form-dialog" id="dialogScope">
+  <div class="dlg-head">
+    <button class="form-close" type="button" data-close aria-label="Close">×</button>
+    <h3><span class="lang-en">Scoping Call Request</span><span class="lang-ar">طلب مكالمة تحديد نطاق</span></h3>
+    <p><span class="lang-en">Free 20-minute call. Sized proposal within 48 hours.</span><span class="lang-ar">مكالمة مجانية ٢٠ دقيقة. عرض مقاس خلال ٤٨ ساعة.</span></p>
+  </div>
+  <form name="scope-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="scope-inquiry">
+    <p class="honeypot"><label>Don't fill: <input name="bot-field"></label></p>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Service of interest<span class="req">*</span></span><span class="lang-ar">الخدمة المطلوبة<span class="req">*</span></span></label>
+      <select name="service" required>
+        <option value="">— —</option>
+        <optgroup label="Penetration testing / المراجعات التقنية">
+          <option>VAPT — Web Application</option>
+          <option>VAPT — Mobile Application</option>
+          <option>VAPT — API</option>
+          <option>VAPT — External Network</option>
+          <option>VAPT — Internal Network</option>
+          <option>Architecture &amp; Configuration Review</option>
+          <option>Firewall Configuration Review</option>
+          <option>Source Code Review</option>
+        </optgroup>
+        <optgroup label="Regulatory audits / التدقيقات">
+          <option>NCA CSCC — Critical Systems</option>
+          <option>NCA CCC — Cloud</option>
+          <option>NCA DCC — Data</option>
+          <option>SAMA CSF Maturity Assessment</option>
+          <option>ISO/IEC 27001 Gap Analysis</option>
+        </optgroup>
+        <option>Other / not sure yet</option>
+      </select>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Company name<span class="req">*</span></span><span class="lang-ar">اسم الشركة<span class="req">*</span></span></label>
+        <input type="text" name="company" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Industry<span class="req">*</span></span><span class="lang-ar">القطاع<span class="req">*</span></span></label>
+        <select name="industry" required>
+          <option value="">— —</option>
+          <option>Fintech</option><option>E-commerce</option><option>Healthtech</option>
+          <option>B2B SaaS</option><option>PropTech / Real Estate</option>
+          <option>Manufacturing</option><option>Services</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Brief scope description<span class="req">*</span></span><span class="lang-ar">وصف مختصر للنطاق<span class="req">*</span></span></label>
+      <textarea name="scope_description" required placeholder="e.g. 1 web app, ~150 endpoints, 2 user roles / تطبيق واحد ١٥٠ endpoint، دورين"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Timeline urgency<span class="req">*</span></span><span class="lang-ar">مدى الاستعجال<span class="req">*</span></span></label>
+      <div class="radio-grid">
+        <label><input type="radio" name="urgency" value="Within 2 weeks" required><span class="lang-en">Within 2 weeks</span><span class="lang-ar">خلال أسبوعين</span></label>
+        <label><input type="radio" name="urgency" value="This month"><span class="lang-en">This month</span><span class="lang-ar">هذا الشهر</span></label>
+        <label><input type="radio" name="urgency" value="This quarter"><span class="lang-en">This quarter</span><span class="lang-ar">هذا الربع</span></label>
+        <label><input type="radio" name="urgency" value="Exploring"><span class="lang-en">Exploring</span><span class="lang-ar">استكشاف</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Budget range (optional but speeds things up)</span><span class="lang-ar">الميزانية التقريبية (اختياري، يسرّع الأمور)</span></label>
+      <input type="text" name="budget" placeholder="e.g. 15,000–25,000 SAR">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Your name<span class="req">*</span></span><span class="lang-ar">اسمك<span class="req">*</span></span></label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label class="lbl"><span class="lang-en">Work email<span class="req">*</span></span><span class="lang-ar">البريد الوظيفي<span class="req">*</span></span></label>
+        <input type="email" name="email" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl"><span class="lang-en">Phone (optional)</span><span class="lang-ar">الجوال (اختياري)</span></label>
+      <input type="tel" name="phone">
+    </div>
+
+    <div class="form-error" data-form-error><span class="lang-en">Something went wrong. Please email hello@hisnsec.com directly.</span><span class="lang-ar">حدث خطأ. الرجاء التواصل عبر hello@hisnsec.com مباشرة.</span></div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-ghost" data-close><span class="lang-en">Cancel</span><span class="lang-ar">إلغاء</span></button>
+      <button type="submit" class="btn btn-primary"><span class="lang-en">Submit</span><span class="lang-ar">إرسال</span></button>
+    </div>
+  </form>
+  <div class="form-success" hidden>
+    <div class="check-icon">✓</div>
+    <h3><span class="lang-en">Got it — scoping call coming.</span><span class="lang-ar">استلمنا — سنحدد موعد المكالمة.</span></h3>
+    <p><span class="lang-en">We'll respond within 48 hours with a sized proposal and scheduling options.</span><span class="lang-ar">سنرد خلال ٤٨ ساعة بعرض مقاس وخيارات موعد.</span></p>
+    <button type="button" class="btn btn-primary" data-close><span class="lang-en">Close</span><span class="lang-ar">إغلاق</span></button>
+  </div>
+</dialog>
+
+<script>
+  (function () {
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Language toggle
+    var langBtn = document.getElementById('langToggle');
+    var bodyEl = document.body;
+    var saved = localStorage.getItem('hisn-lang');
+    if (saved === 'ar') {
+      bodyEl.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+    }
+    langBtn.addEventListener('click', function () {
+      var current = bodyEl.getAttribute('dir');
+      if (current === 'rtl') {
+        bodyEl.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        localStorage.setItem('hisn-lang', 'en');
+      } else {
+        bodyEl.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        localStorage.setItem('hisn-lang', 'ar');
+      }
+    });
+
+    // Dialog open/close
+    document.querySelectorAll('[data-open]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dlg = document.getElementById(btn.getAttribute('data-open'));
+        if (dlg && typeof dlg.showModal === 'function') {
+          dlg.showModal();
+          bodyEl.classList.add('modal-open');
+        }
+      });
+    });
+    document.querySelectorAll('dialog.form-dialog').forEach(function (dlg) {
+      dlg.addEventListener('close', function () { bodyEl.classList.remove('modal-open'); });
+      dlg.addEventListener('click', function (e) {
+        // backdrop click closes
+        var rect = dlg.getBoundingClientRect();
+        var inside = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
+        if (!inside) dlg.close();
+      });
+      dlg.querySelectorAll('[data-close]').forEach(function (b) {
+        b.addEventListener('click', function () { dlg.close(); });
+      });
+    });
+
+    // Form submission via Netlify Forms (AJAX)
+    function encodeFormData(form) {
+      var fd = new FormData(form);
+      var pairs = [];
+      fd.forEach(function (val, key) {
+        pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
+      });
+      return pairs.join('&');
+    }
+    document.querySelectorAll('dialog.form-dialog form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var dlg = form.closest('dialog');
+        var errBox = form.querySelector('[data-form-error]');
+        var submitBtn = form.querySelector('button[type="submit"]');
+        errBox.classList.remove('show');
+        submitBtn.disabled = true;
+        var origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '…';
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(form)
+        }).then(function (response) {
+          if (response.ok) {
+            form.style.display = 'none';
+            dlg.querySelector('.form-success').removeAttribute('hidden');
+          } else {
+            errBox.classList.add('show');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+          }
+        }).catch(function () {
+          errBox.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origText;
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
