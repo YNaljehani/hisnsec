@@ -10,7 +10,7 @@
     </linearGradient>
   </defs>
 
-  <!-- Background rounded square -->
+  <!-- Navy rounded background -->
   <rect x="0" y="0" width="300" height="300" rx="48" fill="url(#bgGrad)"/>
 
   <!-- Subtle inner frame -->
@@ -18,36 +18,58 @@
 
   <!-- Battlement crown (fortress identity) -->
   <g fill="url(#goldGrad)">
-    <rect x="56" y="60" width="30" height="28" rx="2"/>
-    <rect x="96" y="60" width="30" height="28" rx="2"/>
-    <rect x="136" y="60" width="30" height="28" rx="2"/>
-    <rect x="176" y="60" width="30" height="28" rx="2"/>
-    <rect x="216" y="60" width="30" height="28" rx="2"/>
-    <rect x="46" y="88" width="210" height="12" rx="2"/>
+    <rect x="56" y="50" width="28" height="26" rx="2"/>
+    <rect x="96" y="50" width="28" height="26" rx="2"/>
+    <rect x="136" y="50" width="28" height="26" rx="2"/>
+    <rect x="176" y="50" width="28" height="26" rx="2"/>
+    <rect x="216" y="50" width="28" height="26" rx="2"/>
+    <rect x="46" y="76" width="208" height="12" rx="2"/>
   </g>
 
-  <!-- Wall foundation stones (subtle, below wordmark) -->
-  <g opacity="0.18" fill="#E5A800">
-    <rect x="60" y="234" width="40" height="8" rx="1"/>
-    <rect x="105" y="234" width="40" height="8" rx="1"/>
-    <rect x="150" y="234" width="40" height="8" rx="1"/>
-    <rect x="195" y="234" width="40" height="8" rx="1"/>
+  <!--
+    ح letterform — built from SVG paths.
+    Bowl shape opening upward, with right terminal cap and left tail hook
+    (matches the geometric structure of Arabic Hāʾ in display Kufic style).
+  -->
+  <g fill="url(#goldGrad)">
+
+    <!-- Main bowl: thick-walled U with open top -->
+    <path d="
+      M 60 135
+      L 60 215
+      Q 60 250 100 250
+      L 210 250
+      Q 250 250 250 215
+      L 250 135
+      L 220 135
+      L 220 215
+      Q 220 220 215 220
+      L 95 220
+      Q 90 220 90 215
+      L 90 135
+      Z"/>
+
+    <!-- Right terminal: short horizontal cap that closes the top-right edge -->
+    <rect x="216" y="120" width="44" height="15" rx="2"/>
+
+    <!-- Left tail/hook: descending stroke extending from the lower-left corner of the bowl -->
+    <path d="
+      M 60 225
+      L 80 225
+      L 80 258
+      Q 80 264 74 264
+      L 42 264
+      Q 36 264 36 258
+      L 36 245
+      Q 36 225 56 225
+      Z"/>
   </g>
 
-  <!-- HISN wordmark — bold, prominent, brand-recognizable -->
-  <text x="150" y="188"
+  <!-- HISN wordmark (small, supporting) -->
+  <text x="150" y="288"
         font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-        font-size="62" font-weight="900"
-        fill="url(#goldGrad)"
+        font-size="13" font-weight="800"
+        fill="#FFFFFF" opacity="0.6"
         text-anchor="middle"
         letter-spacing="6">HISN</text>
-
-  <!-- Subtitle -->
-  <text x="150" y="218"
-        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-        font-size="11" font-weight="600"
-        fill="#FFFFFF"
-        opacity="0.7"
-        text-anchor="middle"
-        letter-spacing="5">CYBERSECURITY</text>
 </svg>

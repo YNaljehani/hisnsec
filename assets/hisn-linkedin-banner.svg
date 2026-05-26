@@ -18,7 +18,6 @@
     </radialGradient>
   </defs>
 
-  <!-- Background -->
   <rect width="1128" height="191" fill="url(#bg)"/>
   <rect width="1128" height="191" fill="url(#grid)"/>
   <rect width="1128" height="191" fill="url(#glow)"/>
@@ -49,33 +48,55 @@
     <text x="284" y="156">ISO 27001</text>
   </g>
 
-  <!-- Right-side mark: battlements + HISN in a frame -->
-  <g transform="translate(900, 30)">
-    <rect x="0" y="0" width="180" height="130" rx="12" fill="rgba(255,255,255,0.04)" stroke="#E5A800" stroke-width="1" opacity="0.55"/>
+  <!-- Right-side brand mark: battlements + path-rendered ح -->
+  <g transform="translate(920, 24)">
 
-    <!-- Battlement crown -->
+    <!-- Container frame -->
+    <rect x="0" y="0" width="180" height="148" rx="12"
+          fill="rgba(255,255,255,0.04)" stroke="#E5A800" stroke-width="1" opacity="0.55"/>
+
+    <!-- Battlement crown (scaled to fit) -->
     <g fill="#E5A800">
-      <rect x="22" y="14" width="14" height="12" rx="1"/>
-      <rect x="46" y="14" width="14" height="12" rx="1"/>
-      <rect x="70" y="14" width="14" height="12" rx="1"/>
-      <rect x="94" y="14" width="14" height="12" rx="1"/>
-      <rect x="118" y="14" width="14" height="12" rx="1"/>
-      <rect x="142" y="14" width="14" height="12" rx="1"/>
-      <rect x="18" y="26" width="142" height="5" rx="1"/>
+      <rect x="20" y="14" width="16" height="14" rx="1"/>
+      <rect x="44" y="14" width="16" height="14" rx="1"/>
+      <rect x="68" y="14" width="16" height="14" rx="1"/>
+      <rect x="92" y="14" width="16" height="14" rx="1"/>
+      <rect x="116" y="14" width="16" height="14" rx="1"/>
+      <rect x="140" y="14" width="16" height="14" rx="1"/>
+      <rect x="16" y="28" width="144" height="6" rx="1"/>
     </g>
 
-    <!-- HISN wordmark -->
-    <text x="90" y="78" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-          font-size="34" font-weight="900" fill="#E5A800"
-          text-anchor="middle" letter-spacing="4">HISN</text>
-
-    <!-- Underline -->
-    <line x1="36" y1="92" x2="144" y2="92" stroke="#E5A800" stroke-width="1" opacity="0.5"/>
-
-    <!-- Sub-label -->
-    <text x="90" y="110" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-          font-size="9" font-weight="600" fill="#FFFFFF" opacity="0.7"
-          text-anchor="middle" letter-spacing="3">CYBERSECURITY</text>
+    <!-- ح letterform (scaled, path-based) -->
+    <g fill="#E5A800" transform="translate(28, 42) scale(0.5)">
+      <!-- Bowl -->
+      <path d="
+        M 60 135
+        L 60 215
+        Q 60 250 100 250
+        L 210 250
+        Q 250 250 250 215
+        L 250 135
+        L 220 135
+        L 220 215
+        Q 220 220 215 220
+        L 95 220
+        Q 90 220 90 215
+        L 90 135
+        Z"/>
+      <!-- Right terminal cap -->
+      <rect x="216" y="120" width="44" height="15" rx="2"/>
+      <!-- Left tail -->
+      <path d="
+        M 60 225
+        L 80 225
+        L 80 258
+        Q 80 264 74 264
+        L 42 264
+        Q 36 264 36 258
+        L 36 245
+        Q 36 225 56 225
+        Z"/>
+    </g>
   </g>
 
   <!-- URL -->
